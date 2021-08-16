@@ -2,10 +2,5 @@
 .idea
 /*.iml
 /*.log
-<<<<<<< HEAD
 runners
 /*.xml
-=======
-/*.xml
-runners
->>>>>>> main
