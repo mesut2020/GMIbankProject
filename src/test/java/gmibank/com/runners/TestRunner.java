@@ -14,8 +14,8 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@search_01",
-        dryRun = false,
+        tags = "@wip12",
+        dryRun = true,
         stepNotifications = true, // to see report gherkin step level
         monochrome = false, // outputların daha okunabilir olması ıcın
         publish = false  // it is to get online report
