@@ -54,10 +54,25 @@ public class US_001_Page {
     @FindBy(xpath = "//*[text()='Registration saved!']")
     public WebElement succesfulRegisterMessage;
 
+    @FindBy(xpath = "//div[@class='invalid-feedback'][1]")
+    public WebElement ssnErrorMesage;
 
+    @FindBy(xpath = "//div[@class='invalid-feedback'][2]")
+    public WebElement firstNameErrorMesage;
 
+    @FindBy(xpath = "//div[@class='invalid-feedback'][3]")
+    public WebElement lastNameErrorMesage;
 
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[5]/div")
+    public WebElement mobilePhoneNumberErrorMesage;
 
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[6]/div")
+    public WebElement usernameErrorMesage;
 
-
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[7]/div")
+    public WebElement eMailErrorMesage;
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[8]/div")
+    public WebElement passwordErrorMesage;
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[10]/div")
+    public WebElement newPasswordConfirmationErrorMesage;
 }
