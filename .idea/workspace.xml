@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e945db71-3b8a-4533-848d-5e5f192cdc92" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gmibank/com/pages/US_004_Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gmibank/com/pages/US_004_Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gmibank/com/pages/US_017_Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gmibank/com/pages/US_017_Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gmibank/com/stepDefinitions/US_004_StepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gmibank/com/stepDefinitions/US_004_StepDefinitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gmibank/com/stepDefinitions/US_017_StepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gmibank/com/stepDefinitions/US_017_StepDefinitions.java" afterDir="false" />
-    </list>
+    <list default="true" id="e945db71-3b8a-4533-848d-5e5f192cdc92" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
