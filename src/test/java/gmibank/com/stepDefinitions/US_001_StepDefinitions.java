@@ -29,7 +29,7 @@ public class US_001_StepDefinitions {
 
     @Then("Ders User provides a valid SSN")
     public void dersUserProvidesAValidSSN() {
-        registrationPage.ssnTextBox.sendKeys("452-73-7894");
+        registrationPage.ssnTextBox.sendKeys("452-73git-7894");
     }
 
     @Then("Ders User provides a valid Firstname")

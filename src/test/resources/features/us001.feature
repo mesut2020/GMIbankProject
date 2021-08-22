@@ -47,7 +47,7 @@ Feature: System should allow any user to register with valid credentials
     Given The user leaves the Mobile Phone Nummer textbox blank as a user
     Then The user as a user displays the error message "Your Mobile Phone Nummer  is required"
   @us001_tc08
-  Scenario: US_01_TC_08 As a user, the user enters the mobile phone number without the dash in the Mobile Phone Number textbox
+  Scenario: US_01_TC_08 As a user, the user enters the mobile phone number without the dash in the Mobile Phone Number textboxgit
     Given As a user, the user enters the mobile phone number "1231231234" without the dash in the Mobile Phone Number textbox
     Then The user as a user displays the error message "Your Mobile Phone Nummer  is required"
   @us001_tc09
