@@ -44,35 +44,6 @@ public class US_012_StepDefinitions {
 
     }
 
-    @And("the Employee should see the Last Name")
-    public void theEmployeeShouldSeeTheLastName() {
-        System.out.println(us_012_page.expectedElementList);
-    }
-
-    @And("the Employee should see the Middle Initial")
-    public void theEmployeeShouldSeeTheMiddleInitial() {
-        System.out.println(us_012_page.actualElementlist());
-    }
-
-    @And("the Employee should see the E-mail")
-    public void theEmployeeShouldSeeTheEMail() {
-    }
-
-    @And("the Employee should see the Mobile Phone Number")
-    public void theEmployeeShouldSeeTheMobilePhoneNumber() {
-    }
-
-    @And("the Employee should see the Phone Number")
-    public void theEmployeeShouldSeeThePhoneNumber() {
-    }
-
-    @And("the Employee should see the Address")
-    public void theEmployeeShouldSeeTheAddress() {
-    }
-
-    @Then("the Employee should see the Create Date")
-    public void theEmployeeShouldSeeTheCreateDate() {
-    }
 
     @Given("Employee should see and click on the view")
     public void employeeShouldSeeAndClickOnTheView() {
@@ -116,10 +87,7 @@ public class US_012_StepDefinitions {
 
        // String expectedCustomerEmail="democustomer004@gmail.com";
 
-        String actual= us_012_page.state.getText();
-
-
-
+        String actual= us_012_page.state.getAttribute("value");
 
         System.out.println("actual: "+actual);
 
