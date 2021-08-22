@@ -60,8 +60,6 @@ public class US_017_Page {
         @FindBy(xpath = "//button[@type='submit']")
         public WebElement saveButton ;
 
-        @FindBy(xpath = "//*[@id=\"app-view-container\"]/div[1]/div/div/div/div[2]/div[1]/div/span")
-        public WebElement lastPageButton ;
         @FindBy(xpath = "//select[@id='authorities']")
         public WebElement selectButton ;
         @FindBy(xpath = "//div[@class='Toastify__toast Toastify__toast--success toastify-toast']")
