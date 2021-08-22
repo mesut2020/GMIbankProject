@@ -30,5 +30,3 @@ Feature: US_005 Login page should not be accessible with invalid credentials
     When US05 check the link to register a new account
     And US05 click on the link to go to register page
     Then US05 User should see the page "Registration"
-
-    And US05 close the DRIVER

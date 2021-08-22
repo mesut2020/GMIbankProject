@@ -45,7 +45,7 @@ public class US_005_StepDefinitions {
 
     @Then("US05 User should see the page {string}")
     public void usUserShouldSeeThePage(String pageTitle) {
-        us_005_page.isPageTitleExist(pageTitle);
+        Assert.assertTrue( us_005_page.isPageTitleExist(pageTitle));
     }
 
     @When("US05 check the link to register a new account")
