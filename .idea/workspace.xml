@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e945db71-3b8a-4533-848d-5e5f192cdc92" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gmibank/com/pages/US_004_Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gmibank/com/pages/US_004_Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gmibank/com/pages/US_017_Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gmibank/com/pages/US_017_Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gmibank/com/stepDefinitions/US_004_StepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gmibank/com/stepDefinitions/US_004_StepDefinitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gmibank/com/stepDefinitions/US_017_StepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gmibank/com/stepDefinitions/US_017_StepDefinitions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +37,94 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
+  <component name="RunManager" selected="Cucumber Java.Scenario: US017_TC_for_&quot;&lt;role&gt;&quot; Admin can activate a role as &quot;&lt;role&gt;&quot;">
+    <configuration name="Feature: us004" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/us004.feature" />
+      <option name="GLUE" value="gmibank.com.stepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="team54BankProject" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: us004" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: TC001_There should be a valid username and password validating the success message to login" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/us004.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="team54BankProject" />
+      <option name="NAME_FILTER" value="^TC001_There should be a valid username and password validating the success message to login$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^TC001_There should be a valid username and password validating the success message to login$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: TC001_There should be a valid username and password validating the success message to login" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: TC002_There should be an option to cancel login" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/us004.feature" />
+      <option name="GLUE" value="gmibank.com.stepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="team54BankProject" />
+      <option name="NAME_FILTER" value="^TC002_There should be an option to cancel login$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^TC002_There should be an option to cancel login$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: TC002_There should be an option to cancel login" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: US017_TC_for_&quot;&lt;role&gt;&quot; Admin can activate a role as &quot;&lt;role&gt;&quot;" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/us017.feature" />
+      <option name="GLUE" value="gmibank.com.stepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="team54BankProject" />
+      <option name="NAME_FILTER" value="^US017_TC_for_\&quot;.*\&quot; Admin can activate a role as \&quot;.*\&quot;$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^US017_TC_for_\&quot;.*\&quot; Admin can activate a role as \&quot;.*\&quot;$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: US017_TC_for_&quot;&lt;role&gt;&quot; Admin can activate a role as &quot;&lt;role&gt;&quot;" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cucumber Java.Scenario: US017_TC_for_&quot;&lt;role&gt;&quot; Admin can activate a role as &quot;&lt;role&gt;&quot;" />
+        <item itemvalue="Cucumber Java.Scenario: TC002_There should be an option to cancel login" />
+        <item itemvalue="Cucumber Java.Feature: us004" />
+        <item itemvalue="Cucumber Java.Scenario: TC001_There should be a valid username and password validating the success message to login" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,5 +135,8 @@
       <updated>1629016486250</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
