@@ -14,12 +14,15 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "gmibank/com/stepDefinitions",
+
         tags = "@dene1",
+
+        tags = "@wip",
+
         dryRun = false,
         stepNotifications = true, // to see report gherkin step level
         monochrome = false, // outputların daha okunabilir olması ıcın
         publish = false  // it is to get online report
 )
 public class TestRunner {
-
 }
