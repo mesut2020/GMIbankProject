@@ -13,8 +13,8 @@ import org.junit.runner.RunWith;
                 "rerun:target/FailedReRun.txt"
         },
         features = "src/test/resources/features",
-        glue = "stepDefinitions",
-        tags = "@search_01",
+        glue = "gmibank/com/stepDefinitions",
+        tags = "@wip",
         dryRun = false,
         stepNotifications = true, // to see report gherkin step level
         monochrome = false, // outputların daha okunabilir olması ıcın
