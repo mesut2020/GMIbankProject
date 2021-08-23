@@ -13,7 +13,6 @@ public class US_005_Page extends ReusableMethods {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    WebDriver driver = Driver.getDriver();
     GmiSignInPage gmiSignInPage = new GmiSignInPage();
 
 
@@ -66,9 +65,6 @@ public class US_005_Page extends ReusableMethods {
     }
 
     public boolean isLinkRegisterNewAccountExist(){
-        return waitForVisibility(registerNewAccountLink,5).isDisplayed();
+        return registerNewAccountLink.isEnabled();
     }
-
-
-
 }

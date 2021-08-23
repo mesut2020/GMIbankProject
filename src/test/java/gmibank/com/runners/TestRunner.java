@@ -21,5 +21,4 @@ import org.junit.runner.RunWith;
         publish = false  // it is to get online report
 )
 public class TestRunner {
-
 }
