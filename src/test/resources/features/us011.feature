@@ -20,7 +20,7 @@ Feature: US_11 tests
     Examples: Test Dates
       | Create Date      |
       | 12.12.2015 12:00 |
-      | 01.20.2020 11:15 |
+      #| 01.20.2020 11:15 |
 
 
   @TC_1102
@@ -30,8 +30,8 @@ Feature: US_11 tests
 
     Examples: Test Dates
       | Create Date Invalid |
-      | 01.12.2020          |
-      | 01.20.2021 11       |
+    #  | 01.12.2020          |
+     # | 01.20.2021 11       |
       | 11.2021 09:30       |
 
   @TC_1103
@@ -41,7 +41,7 @@ Feature: US_11 tests
 
     Examples: Test Dates
       | Create Date Valid |
-      | 12.30.2020 12:00  |
+   #   | 12.30.2020 12:00  |
       | 01.21.2021 11:15  |
 
   @TC_1104

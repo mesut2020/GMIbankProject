@@ -82,8 +82,11 @@ public class US_011_StepDefinitions {
     @Given("user select a user from dropbox")
     public void user_select_a_user_from_dropbox() {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.waitFor(1);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.waitFor(1);
         Select options = new Select(us011Page.userDropdownBox);
-        options.selectByIndex(5);
+        options.selectByIndex(1);
 
     }
 
