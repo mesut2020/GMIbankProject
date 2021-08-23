@@ -15,45 +15,42 @@ import java.util.List;
 
 public class US_012_StepDefinitions {
 
-    US_012_Page us_012_page=new US_012_Page();
+    US_012_Page us_012_page = new US_012_Page();
 
     @Given("User navigate to the LinnBank homepage")
     public void userNavigateToTheLinnBankHomepage() {
         us_012_page.goUrl();
 
     }
+
     @And("User login as a employee")
     public void userLoginAsAEmployee() {
         us_012_page.employee();
 
     }
+
     @And("Click on myOperations link")
     public void clickOnMyOperationsLink() {
         us_012_page.operationLink();
 
     }
+
     @And("Click on manageCustomers link")
     public void clickOnManageCustomersLink() {
         us_012_page.manageCustomer.click();
     }
 
 
-    @Given("the Employee should see the First Name")
-    public void theEmployeeShouldSeeTheFirstName() {
-        Assert.assertEquals(us_012_page.expectedElementList,us_012_page.actualElementlist());
-
-    }
-
 
     @Given("Employee should see and click on the view")
     public void employeeShouldSeeAndClickOnTheView() {
-        List<WebElement> viewButton=Driver.getDriver().findElements(By.xpath("//a[@class='btn btn-info btn-sm']"));
+        List<WebElement> viewButton = Driver.getDriver().findElements(By.xpath("//a[@class='btn btn-info btn-sm']"));
         System.out.println(viewButton.size());
         //Assert.assertTrue(us_012_page.viewButton.isEnabled());
-        int expectedSize=20;
-        Assert.assertEquals(expectedSize,viewButton.size());
+        int expectedSize = 20;
+        Assert.assertEquals(expectedSize, viewButton.size());
         us_012_page.viewButtonSayi.click();
-       Assert.assertTrue(us_012_page.viewSayfasi.isDisplayed());
+        Assert.assertTrue(us_012_page.viewSayfasi.isDisplayed());
 
     }
 
@@ -74,23 +71,25 @@ public class US_012_StepDefinitions {
 
     @And("Employee should click on the Edit button")
     public void employeeShouldClickOnTheEditButton() throws InterruptedException {
-      // Driver.scrollToElement(us_012_page.viewSayfasiEdit);
-       us_012_page.editButtonClick();
-       Thread.sleep(3000);
-
+        // Driver.scrollToElement(us_012_page.viewSayfasiEdit);
+        us_012_page.editButtonClick();
+        Thread.sleep(3000);
 
 
     }
 
     @Then("Employee should check all customer information can be populated")
     public void employeeShouldCheckAllCustomerInformationCanBePopulated() throws InterruptedException {
+         String expectedIm= "MI";
+         String expectedCustomerState="TURKEY";
+         String expectedCustomerEmail="democustomer004@gmail.com";
+         String actualIm= us_012_page.im.getAttribute("value");
+         String actualCustomerState=us_012_page.state.getAttribute("value");
+         String actualCustomerEmail=us_012_page.eMail.getAttribute("value");
 
-       // String expectedCustomerEmail="democustomer004@gmail.com";
-
-        String actual= us_012_page.state.getAttribute("value");
-
-        System.out.println("actual: "+actual);
-
+      Assert.assertEquals(expectedIm,actualIm);
+      Assert.assertEquals(expectedCustomerState,actualCustomerState);
+      Assert.assertEquals(expectedCustomerEmail,actualCustomerEmail);
 
 
     }
@@ -101,7 +100,7 @@ public class US_012_StepDefinitions {
         JSExecutor.scrollInToViewJS(us_012_page.eMail);
         Thread.sleep(3000);
         us_012_page.eMail.clear();
-        Driver.waitAndSendText(us_012_page.eMail, ConfigurationReader.getProperty("updateMail"),2);
+        Driver.waitAndSendText(us_012_page.eMail, ConfigurationReader.getProperty("updateMail"), 2);
 
 
     }
@@ -118,13 +117,12 @@ public class US_012_StepDefinitions {
     public void employeeShouldVerifiesTranslationNotFoundGmiBankBackendAppTPCustomerUpdated() throws InterruptedException {
 
 
+        String actualMessage = us_012_page.toastMessage.getText();
 
-        String actualMessage=us_012_page.toastMessage.getText();
+        System.out.println("actual message:" + actualMessage + ".");
+        String expectedMessage = "translation-not-found[gmiBankBackendApp.tPCustomer.updated]";
 
-        System.out.println("actual message:"+actualMessage+".");
-        String expectedMessage="translation-not-found[gmiBankBackendApp.tPCustomer.updated]";
-
-           Assert.assertEquals(expectedMessage,actualMessage);
+        Assert.assertEquals(expectedMessage, actualMessage);
 
 
     }
@@ -148,13 +146,13 @@ public class US_012_StepDefinitions {
     @And("Employee should verifies  message")
     public void employeeShouldVerifiesMessage() throws InterruptedException {
 
-        String expected="Confirm delete operation";
+        String expected = "Confirm delete operation";
 
         Thread.sleep(3000);
 
-        String actual=us_012_page.confirmMessage.getText();
+        String actual = us_012_page.confirmMessage.getText();
         System.out.println(actual);
-        Assert.assertEquals(expected,actual);
+        Assert.assertEquals(expected, actual);
 
     }
 
@@ -163,5 +161,14 @@ public class US_012_StepDefinitions {
     public void userShouldCloseTheDRIVER() {
         Driver.wait(2);
         Driver.closeDriver();
+    }
+
+    @Then("Checked all customer information was filled")
+    public void checkedAllCustomerInformationWasFilled() {
+        Assert.assertEquals(us_012_page.expectedElementList, us_012_page.actualElementlist());
+    }
+
+    @Given("User select First Name, Last Name, Middle Initial, Email, Mobile Phone Number,Phone Number, Address, Date updated\"")
+    public void userSelectFirstNameLastNameMiddleInitialEmailMobilePhoneNumberPhoneNumberAddressDateUpdated() throws Throwable {    // Write code here that turns the phrase above into concrete actions    throw new cucumber.api.PendingException();}
     }
 }

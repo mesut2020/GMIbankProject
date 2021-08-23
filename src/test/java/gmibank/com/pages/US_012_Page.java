@@ -76,6 +76,9 @@ public class US_012_Page {
     @FindBy(xpath = "//input[@id='tp-customer-state']")
     public WebElement state;
 
+    @FindBy(xpath = "//input[@id='tp-customer-middleInitial']")
+    public WebElement im;
+
 
 
 

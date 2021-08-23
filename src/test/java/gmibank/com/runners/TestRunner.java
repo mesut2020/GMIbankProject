@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 
         tags = "@dene1",
 
-        tags = "@wip",
+
 
         dryRun = false,
         stepNotifications = true, // to see report gherkin step level

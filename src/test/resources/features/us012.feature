@@ -20,7 +20,7 @@ And Click on manageCustomers link
     Given Employee should see and click on the view
     Then Employee should see and click Edit button
     And User should close the DRIVER
-  @dene1
+
   Scenario: There should be an Edit button where all customer information can be populated
     And Employee should click on the View button for any customer
     And Employee should click on the Edit button
