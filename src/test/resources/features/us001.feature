@@ -1,6 +1,6 @@
-Feature: System should allow any user to register with valid credentials
-  validating the success message
-  Background:
+Feature: System should allow any user to register with valid credentials validating the success message
+
+  Background:Home Page
     Given Ders User on the home page "gmibank_url"
     And Ders User navigates to registration page
 

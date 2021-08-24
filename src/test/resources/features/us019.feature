@@ -1,45 +1,50 @@
 Feature: US_019 System should allow Admin to create a new Account
 
   Background: user anters gmibank homepage then reaches create new costomers link
-    Given user enters gmibank homepage
+    Given Ders User on the home page "gmibank_url"
     Then user clicks userEntry icon
     Then user clicks signIn link
-    Then user enters admin username "admin"
-    Then user enters admin password "admin"
+    Then user enters admin username "bankprojectmanager"
+    Then user enters admin password "Bankprojectmanager."
     Then user clicks signIn button
     And user clicks myOperations link
     And user clicks manageAccounts link
     And user clicks createNewAccount link
 
   @US019_TC01
-  Scenario: tc1901 admin enter Description
-    Given   admin click Description
-    And     admin click Balance
-    And     admin sees required message
-    And     admin signOut
+  Scenario: Create new Acoount
+    Given An investment type or name is entered in the "Description" box.
+    And     Enter an amount in the "Balance" box
+    And     click the save button
+    Then    admin sees required message
 
 
-  @US019_TC02
-  Scenario:  tc1902 should provide a balance as a Dollar
-    Given    admin create as a dollar account "200" and verify
-    And      admin signOut
-
+@US019_TC02
+  Scenario:  Description box error message
+    Given click the Description box
+    And Description box is left blank
+    And press Enter key
+    Then Error message under Description box is observed
+  @US019_TC03
+  Scenario: Balance box error message
+    Given click the Balance box
+    And Balance box is left blank
+    And  press Enter  keyy
+    Then Error message under Balance box is observed
   @US019_TC04
-  Scenario: tc1903 can select an account type as CHECKING, SAVING, CREDIT_CARD or INVESTING
+  Scenario:  can select an account type as CHECKING, SAVING, CREDIT_CARD or INVESTING
     Given   admin select an account as CHECKING and verify
     And     admin select an account as a SAVING and verify
     And     admin select an account as a CREDIT_CARD and verify
     And     admin select an account as a INVESTING and verify
-    And     admin signOut
 
   @US019_TC05
-  Scenario: tc1904 should account status defined as ACTIVE, SUESPENDED or CLOSED
+  Scenario: should account status defined as ACTIVE, SUESPENDED or CLOSED
     Given   admin click Account Status Type defined as a ACTIVE and verify
     And     admin click Account Status Type defined as a  SUESPENDED and verify
     And     admin click Account Status Type defined as a  CLOSED and verify
-    And     admin signOut
 
   @US019_TC06
-  Scenario: tc1905 can select an employee from the drop-down
+  Scenario: can select an employee from the drop-down
     Given   admin select Employee and verify the selectet Employee
     And     admin signOut
