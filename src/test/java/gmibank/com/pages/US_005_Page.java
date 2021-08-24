@@ -1,3 +1,5 @@
+
+
 package gmibank.com.pages;
 
 import gmibank.com.utilities.Driver;
@@ -9,11 +11,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class US_005_Page extends ReusableMethods {
 
-    public US_005_Page(){
+    public US_005_Page() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    WebDriver driver = Driver.getDriver();
     GmiSignInPage gmiSignInPage = new GmiSignInPage();
 
 
@@ -29,46 +30,44 @@ public class US_005_Page extends ReusableMethods {
     @FindBy(css = "a[href='/account/register']>span")
     private WebElement registerNewAccountLink;
 
-    public void goToSignInPage(){
+    public void goToSignInPage() {
         Driver.iAmOnHomePage();
     }
 
-    public void typeUserName(String username){
+    public void typeUserName(String username) {
         Driver.waitAndSendText(gmiSignInPage.username, username, 5);
     }
 
-    public void typePassword(String password){
+    public void typePassword(String password) {
         Driver.waitAndSendText(gmiSignInPage.password, password, 5);
     }
 
-    public void clickOnSubmitButton(){
+    public void clickOnSubmitButton() {
         Driver.waitAndClick(gmiSignInPage.submit, 5);
     }
 
-    public boolean isErrorMessageExist(String errorMessage){
+    public boolean isErrorMessageExist(String errorMessage) {
         return waitForVisibility(errorMessageEl, 5).getText().equals(errorMessage);
     }
 
-    public boolean isLinkResetPassExist(){
-        return waitForVisibility(resetPasswordLink,5).isDisplayed();
+    public boolean isLinkResetPassExist() {
+        return waitForVisibility(resetPasswordLink, 5).isDisplayed();
     }
 
-    public void clickOnResetPassword(){
+    public void clickOnResetPassword() {
         Driver.clickWithJS(resetPasswordLink);
     }
 
-    public void clickOnRegisterNewAcc(){
+    public void clickOnRegisterNewAcc() {
         Driver.clickWithJS(registerNewAccountLink);
     }
 
-    public boolean isPageTitleExist(String pageTItle){
+    public boolean isPageTitleExist(String pageTItle) {
         return waitForVisibility(pageTitleEl, 5).getText().equals(pageTItle);
     }
 
-    public boolean isLinkRegisterNewAccountExist(){
-        return waitForVisibility(registerNewAccountLink,5).isDisplayed();
+    public boolean isLinkRegisterNewAccountExist() {
+        return registerNewAccountLink.isEnabled();
     }
-
-
 
 }
