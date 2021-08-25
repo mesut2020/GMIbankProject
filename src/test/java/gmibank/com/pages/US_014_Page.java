@@ -57,6 +57,12 @@ public class US_014_Page {
     @FindBy(css = "#tp-customer-firstName")
     public WebElement firstNameAfterSearch;
 
+    @FindBy(xpath = "(//tbody//tr//td//a)[1]")
+    public WebElement accountPageFirstID;
+
+    @FindBy(xpath = "//h2//b")
+    public WebElement firstAccountDetails;
+
 
     public void loginWith(String accountType){
         profileMenuButton.click();

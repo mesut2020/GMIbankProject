@@ -14,10 +14,10 @@ public class US_015_StepDefinitions {
     US_015_Page us_015_page = new US_015_Page();
     boolean check;
 
-    @After
+    /*@After
     public void after(){
         Driver.closeDriver();
-    }
+    }*/
 
     @Given("US15 login to GMIBank as a Customer")
     public void usLoginToGMIBankAsACustomer() {

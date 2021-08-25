@@ -69,9 +69,9 @@ us_016_page.clickToWebElement("myAccounts");
         Assert.assertTrue(us_016_page.verifyText("succesfullMessage",message));
     }
 
-@After
+/*@After()
     public void after(){
     Driver.closeDriver();
-}
+}*/
 
 }
