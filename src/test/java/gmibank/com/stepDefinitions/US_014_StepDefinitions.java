@@ -1,12 +1,17 @@
 package gmibank.com.stepDefinitions;
 import gmibank.com.pages.US_014_Page;
 import gmibank.com.utilities.ConfigurationReader;
+import gmibank.com.utilities.Driver;
+import gmibank.com.utilities.JSExecutor;
+import gmibank.com.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+
+import javax.swing.*;
 
 
 public class US_014_StepDefinitions {
@@ -132,9 +137,23 @@ public class US_014_StepDefinitions {
 
     }
 
-    @Then("user verifies no error messge displayed since this section is optional")
+    @Then("user verifies no error message displayed since this section is optional")
     public void userVerifiesNoErrorMessgeDisplayedSinceThisSectionIsOptional() {
 
     }
 
+    @And("clicks on an ID item to choose an account created on manage accounts")
+    public void clicksOnAnIDItemToChooseAnAccountCreatedOnManageAccounts() {
+        ReusableMethods.waitForPageToLoad(5);
+        us014Page.accountPageFirstID.click();
+
+    }
+
+    @Then("verifies selected account is displayed")
+    public void verifiesSelectedAccountIsDisplayed() {
+        String firstAccountDetailsText = us014Page.firstAccountDetails.getText();
+        String title = Driver.getDriver().getTitle();
+        Assert.assertTrue(title.contains(firstAccountDetailsText));
+
+    }
 }
