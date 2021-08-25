@@ -23,7 +23,7 @@ public class US_019_Page {
     @FindBy(xpath = "//input[@name='description']")
     public WebElement descriptionBox;
 
-    @FindBy(xpath = "(//div[.='This field is required.'])[2]")
+    @FindBy(xpath = "//div[@class='Toastify__toast-body']")
     public WebElement thisFieldIsRequeiredMessage;
 
     @FindBy(xpath = "//input[@name='balance']")
@@ -50,4 +50,13 @@ public class US_019_Page {
     @FindBy(xpath = "//span[.='Sign out']")
     public WebElement signoutLink;
 
+    @FindBy(xpath = "//*[@id=\"save-entity\"]/span")
+    public WebElement saveButton;
+
+    @FindBy(xpath = "(//div[@class='invalid-feedback'])[1]")
+    public WebElement descriptionBoxErorMesage ;
+    @FindBy(xpath = "(//div[@class='invalid-feedback'])[2]")
+    public WebElement balanceBoxErorMesage ;
+    @FindBy(xpath = "//*[@id=\"account-menu\"]/a/span")
+    public WebElement bankProjeckt;
 }

@@ -57,10 +57,10 @@ public class US_001_Page {
     @FindBy(xpath = "//div[@class='invalid-feedback'][1]")
     public WebElement ssnErrorMesage;
 
-    @FindBy(xpath = "//div[@class='invalid-feedback'][2]")
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[2]/div")
     public WebElement firstNameErrorMesage;
 
-    @FindBy(xpath = "//div[@class='invalid-feedback'][3]")
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[3]/div")
     public WebElement lastNameErrorMesage;
 
     @FindBy(xpath = "//*[@id=\"register-form\"]/div[5]/div")

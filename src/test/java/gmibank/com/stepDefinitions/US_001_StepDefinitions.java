@@ -15,10 +15,12 @@ import org.openqa.selenium.Keys;
 public class US_001_StepDefinitions {
     GmiSignInPage homePage = new GmiSignInPage();
     US_001_Page registrationPage = new US_001_Page();
+
     @Given("Ders User on the home page {string}")
-    public void HomePage(String gmibank_url) {
-        Driver.getDriver().get(ConfigurationReader.getProperty(gmibank_url));
+    public void dersUserOnTheHomePage(String url) {
+        Driver.getDriver().get(ConfigurationReader.getProperty(url));
     }
+
 
     @And("Ders User navigates to registration page")
     public void dersUserNavigatesToRegistrationPage() {
@@ -29,7 +31,7 @@ public class US_001_StepDefinitions {
 
     @Then("Ders User provides a valid SSN")
     public void dersUserProvidesAValidSSN() {
-        registrationPage.ssnTextBox.sendKeys("452-73git-7894");
+        registrationPage.ssnTextBox.sendKeys("146-58-6258");
     }
 
     @Then("Ders User provides a valid Firstname")
@@ -50,7 +52,7 @@ public class US_001_StepDefinitions {
 
     @Then("Ders User provides a valid Mobile Phone Number")
     public void dersUserProvidesAValidMobilePhoneNumber() {
-        registrationPage.mobilePhoneNumberTextBox.sendKeys("");
+        registrationPage.mobilePhoneNumberTextBox.sendKeys("254-254-7326");
     }
 
     @Then("Ders User provides a valid Username")
