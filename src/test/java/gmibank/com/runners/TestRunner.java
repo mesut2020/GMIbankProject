@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
                 "junit:target/xml-report/cucumber.xml",
                 "rerun:target/FailedReRun.txt"
         },
-        features = "src/test/resources/features",
+        features = "src/test/resources/uı_features",
         glue = "gmibank/com/stepDefinitions",
 
         tags = "@dene1",
