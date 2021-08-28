@@ -3,7 +3,7 @@ package gmibank.com.pojos;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Customer5 {
+public class Customer {
 
     private int id;
     private String firstName;
@@ -18,7 +18,7 @@ public class Customer5 {
     private String ssn;
     private String createDate;
     private boolean zelleEnrolled;
-    private Country5 country;
+    private Country country;
     private String state;
     private Users5 user;
     private String accounts;
@@ -127,11 +127,11 @@ public class Customer5 {
         this.zelleEnrolled = zelleEnrolled;
     }
 
-    public Country5 getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(Country5 country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 
