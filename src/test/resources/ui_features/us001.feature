@@ -8,12 +8,12 @@ Feature: System should allow any user to register with valid credentials validat
   Scenario: US_01_TC_01 System should allow any user to register with valid credentials
   validating the success message
 
-    Then Ders User provides a valid SSN
+    Then Ders User provides a valid "SSN"
     Then Ders User provides a valid Firstname
     Then Ders User provides a valid Lastname
     Then Ders User provides a valid Address
     Then Ders User provides a valid Mobile Phone Number
-    Then Ders User provides a valid Username
+    Then Ders User provides a valid Username "Usernamee"
     Then Ders User provides a valid Email
     Then Ders User provides a valid Password
     Then Ders User provides a valid Password to Password confirmation textbox
