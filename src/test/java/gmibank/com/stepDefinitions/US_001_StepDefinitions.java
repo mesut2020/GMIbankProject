@@ -29,9 +29,9 @@ public class US_001_StepDefinitions {
         registrationPage.ilkRegisterButton.click();
     }
 
-    @Then("Ders User provides a valid SSN")
-    public void dersUserProvidesAValidSSN() {
-        registrationPage.ssnTextBox.sendKeys("146-58-6258");
+    @Then("Ders User provides a valid {string}")
+    public void dersUserProvidesAValidSSN(String ssn) {
+        registrationPage.ssnTextBox.sendKeys(ConfigurationReader.getProperty(ssn));
     }
 
     @Then("Ders User provides a valid Firstname")
@@ -55,9 +55,9 @@ public class US_001_StepDefinitions {
         registrationPage.mobilePhoneNumberTextBox.sendKeys("254-254-7326");
     }
 
-    @Then("Ders User provides a valid Username")
-    public void dersUserProvidesAValidUsername() {
-        registrationPage.usernameTextBox.sendKeys("Yakup123");
+    @Then("Ders User provides a valid Username {string}")
+    public void dersUserProvidesAValidUsername(String username) {
+        registrationPage.usernameTextBox.sendKeys(ConfigurationReader.getProperty(username));
     }
 
     @Then("Ders User provides a valid Email")
