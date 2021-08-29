@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class US_017_StepDefinitions {
 
-    US_017_Page us_017_page= new US_017_Page();
+    US_017_Page us_017_page = new US_017_Page();
 
     @And("user click on Administration > User Mangement  on Header")
     public void userClickOnAdministrationUserMangementOnHeader() {
@@ -63,5 +63,18 @@ public class US_017_StepDefinitions {
     public void userVerifiesSuccessMessage() throws InterruptedException {
         Thread.sleep(3000);
         Assert.assertTrue(us_017_page.succesText.getText().contains("is created with identifier"));
+    }
+
+    @And("user clicks on createDate sort sorting button")
+    public void userClicksOnCreateDateSortSortingButton() {
+        us_017_page.createDateSortButton.click();
+    }
+
+    @And("user finds customer {string} and activates user")
+    public void userFindsCustomerAndActivatesUser(String customer) {
+
+        if (us_017_page.activatedUser(customer).getText().equals("Deactivated")) {
+            us_017_page.activatedUser(customer).click();
+        }
     }
 }

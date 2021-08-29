@@ -18,7 +18,7 @@ public class US_011_StepDefinitions {
     @And("user clicks myOperations link")
     public void userClicksMyOperationsLink() {
         ReusableMethods.waitFor(1);
-        us011Page.myOperationLink.click();
+        //us011Page.myOperationLink.click();
     }
 
     @And("user clicks manageCostomers link")
