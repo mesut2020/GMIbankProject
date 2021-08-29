@@ -1,33 +1,10 @@
 package gmibank.com.pojos;
 
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer {
-    public Customer() {
-    }
-
-    public Customer(int id, String firstName, String lastName, String middleInitial, String email, String mobilePhoneNumber, String phoneNumber, String zipCode, String address, String city, String ssn, String createDate, boolean zelleEnrolled, Country country, States state, Users user, Accounts accounts) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.middleInitial = middleInitial;
-        this.email = email;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.phoneNumber = phoneNumber;
-        this.zipCode = zipCode;
-        this.address = address;
-        this.city = city;
-        this.ssn = ssn;
-        this.createDate = createDate;
-        this.zelleEnrolled = zelleEnrolled;
-        this.country = country;
-        this.state = state;
-        this.user = user;
-        this.accounts = accounts;
-    }
-
     private int id;
     private String firstName;
     private String lastName;
@@ -42,7 +19,7 @@ public class Customer {
     private String createDate;
     private boolean zelleEnrolled;
     private Country country;
-    private States state;
+    private String state;
     private Users user;
     private Accounts accounts;
 
@@ -158,11 +135,11 @@ public class Customer {
         this.country = country;
     }
 
-    public States getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(States state) {
+    public void setState(String state) {
         this.state = state;
     }
 
@@ -181,28 +158,4 @@ public class Customer {
     public void setAccounts(Accounts accounts) {
         this.accounts = accounts;
     }
-
-    @Override
-    public String toString() {
-        return "Customers{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", middleInitial='" + middleInitial + '\'' +
-                ", email='" + email + '\'' +
-                ", mobilePhoneNumber='" + mobilePhoneNumber + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", ssn='" + ssn + '\'' +
-                ", createDate='" + createDate + '\'' +
-                ", zelleEnrolled=" + zelleEnrolled +
-                ", country=" + country +
-                ", state=" + state +
-                ", user=" + user +
-                ", accounts=" + accounts +
-                '}';
-    }
-
 }

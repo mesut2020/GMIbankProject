@@ -27,4 +27,23 @@ Feature: US017 System should allow the Admin to manage users
       |team54admin|Team54admin.|ROLE_ADMIN|
 
 
+  Scenario Outline: demo
+
+    Given user go to  "gmibank_url"
+    And user click on account menu
+    And user click on sign in
+    And user enter a valid "<username>" to usernamebox
+    And user enter a valid "<password>" to passwordbox
+    Then user click on "Sign in" button
+    And user click on Administration > User Mangement  on Header
+    And user clicks on createDate sort sorting button
+    And user finds customer "ykppp" and activates user
+
+
+
+    Examples:
+      | username    | password     |
+      | team54admin | Team54admin. |
+
+
 

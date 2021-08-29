@@ -1,9 +1,12 @@
 package gmibank.com.pages;
 
 import gmibank.com.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class US_017_Page {
 
@@ -46,7 +49,7 @@ public class US_017_Page {
 
         @FindBy(xpath = "//*[@id=\"authorities\"]/option[1]")
         public WebElement roleAdminOption ;
-        @FindBy(xpath = "//*[@id=\"authorities\"]/option[2]']")
+        @FindBy(xpath = "//*[@id=\"authorities\"]/option[2]")
         public WebElement roleUserOption ;
         @FindBy(xpath = "//*[@id=\"authorities\"]/option[3]")
         public WebElement roleEmployeeOption ;
@@ -64,5 +67,19 @@ public class US_017_Page {
         public WebElement selectButton ;
         @FindBy(xpath = "//div[@class='Toastify__toast Toastify__toast--success toastify-toast']")
         public WebElement succesText ;
+
+        @FindBy(xpath = "//thead//tr//th[7]")
+        public WebElement createDateSortButton;
+
+
+        public WebElement activatedUser(String user){
+
+               WebElement element = Driver.getDriver().findElement(By.xpath("//tbody//tr[@id='"+user+"']//button[@type='button']"));
+               return element;
+        }
+
+
+
+
 
 }

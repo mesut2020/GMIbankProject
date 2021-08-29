@@ -1,20 +1,10 @@
 package gmibank.com.pojos;
 
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class States {
-
-    public States() {
-    }
-
-    public States(int id, String name, String tpcountry) {
-        this.id = id;
-        this.name = name;
-        this.tpcountry = tpcountry;
-    }
-
     private int id;
     private String name;
     private String tpcountry;
@@ -41,14 +31,5 @@ public class States {
 
     public void setTpcountry(String tpcountry) {
         this.tpcountry = tpcountry;
-    }
-
-    @Override
-    public String toString() {
-        return "States{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", tpcountry='" + tpcountry + '\'' +
-                '}';
     }
 }
