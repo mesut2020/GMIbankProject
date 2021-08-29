@@ -65,9 +65,9 @@ public class US_001_StepDefinitions {
         registrationPage.emailTextBox.sendKeys("ykp@mail.com");
     }
 
-    @Then("Ders User provides a valid Password")
-    public void dersUserProvidesAValidPassword() {
-        registrationPage.firstPasswordTextBox.sendKeys("Yakup123.");
+    @Then("Ders User provides a valid Password {string}")
+    public void dersUserProvidesAValidPassword(String password) {
+        registrationPage.firstPasswordTextBox.sendKeys(ConfigurationReader.getProperty(password));
     }
 
     @Then("Ders User provides a valid Password to Password confirmation textbox")
