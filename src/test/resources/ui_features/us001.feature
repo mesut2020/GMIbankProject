@@ -15,7 +15,7 @@ Feature: System should allow any user to register with valid credentials validat
     Then Ders User provides a valid Mobile Phone Number
     Then Ders User provides a valid Username "Usernamee"
     Then Ders User provides a valid Email
-    Then Ders User provides a valid Password
+    Then Ders User provides a valid Password "Password"
     Then Ders User provides a valid Password to Password confirmation textbox
     Then User clicks on Register button
     And Ders User validates that he registered succesfully
