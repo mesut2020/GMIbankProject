@@ -1,6 +1,7 @@
 package gmibank.com.stepDefinitions;
 
 
+import com.github.javafaker.Faker;
 import gmibank.com.pages.GmiSignInPage;
 import gmibank.com.pages.US_001_Page;
 import gmibank.com.utilities.ConfigurationReader;
@@ -16,61 +17,62 @@ public class US_001_StepDefinitions {
     GmiSignInPage homePage = new GmiSignInPage();
     US_001_Page registrationPage = new US_001_Page();
 
-    @Given("Ders User on the home page {string}")
+    @Given("user on the home page {string}")
     public void dersUserOnTheHomePage(String url) {
         Driver.getDriver().get(ConfigurationReader.getProperty(url));
     }
 
 
-    @And("Ders User navigates to registration page")
+    @And("user navigates to registration page")
     public void dersUserNavigatesToRegistrationPage() {
         registrationPage.icon.click();
 
         registrationPage.ilkRegisterButton.click();
     }
 
-    @Then("Ders User provides a valid {string}")
+    @Then("user provides a valid {string}")
     public void dersUserProvidesAValidSSN(String ssn) {
         registrationPage.ssnTextBox.sendKeys(ConfigurationReader.getProperty(ssn));
     }
 
-    @Then("Ders User provides a valid Firstname")
+    @Then("user provides a valid Firstname")
     public void dersUserProvidesAValidFirstname() {
         registrationPage.firstNameTextBox.sendKeys("Yakup");
     }
 
 
-    @Then("Ders User provides a valid Lastname")
+    @Then("user provides a valid Lastname")
     public void dersUserProvidesAValidLastname() {
         registrationPage.lastNameTextBox.sendKeys("Ak");
     }
 
-    @Then("Ders User provides a valid Address")
+    @Then("user provides a valid Address")
     public void dersUserProvidesAValidAddress() {
         registrationPage.addressTextBox.sendKeys("Salladim str. 55");
     }
 
-    @Then("Ders User provides a valid Mobile Phone Number")
+    @Then("user provides a valid Mobile Phone Number")
     public void dersUserProvidesAValidMobilePhoneNumber() {
         registrationPage.mobilePhoneNumberTextBox.sendKeys("254-254-7326");
     }
 
-    @Then("Ders User provides a valid Username {string}")
+    @Then("user provides a valid Username {string}")
     public void dersUserProvidesAValidUsername(String username) {
         registrationPage.usernameTextBox.sendKeys(ConfigurationReader.getProperty(username));
     }
 
-    @Then("Ders User provides a valid Email")
+    @Then("user provides a valid Email")
     public void dersUserProvidesAValidEmail() {
-        registrationPage.emailTextBox.sendKeys("ykp@mail.com");
+        Faker faker = new Faker();
+        registrationPage.emailTextBox.sendKeys(faker.internet().emailAddress());
     }
 
-    @Then("Ders User provides a valid Password {string}")
+    @Then("user provides a valid Password {string}")
     public void dersUserProvidesAValidPassword(String password) {
         registrationPage.firstPasswordTextBox.sendKeys(ConfigurationReader.getProperty(password));
     }
 
-    @Then("Ders User provides a valid Password to Password confirmation textbox")
+    @Then("user provides a valid Password to Password confirmation textbox")
     public void dersUserProvidesAValidPasswordToPasswordConfirmationTextbox() {
         registrationPage.secondPasswordTextBox.sendKeys("Yakup123.");
     }
@@ -78,6 +80,7 @@ public class US_001_StepDefinitions {
     @Then("User clicks on Register button")
     public void userClicksOnRegisterButton() {
         registrationPage.registerButton.click();
+        ReusableMethods.waitFor(5);
     }
 
     @And("Ders User validates that he registered succesfully")

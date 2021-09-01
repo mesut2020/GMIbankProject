@@ -84,10 +84,15 @@ public class US_020_StepDefinitions {
             customerId.add(customers[i].getId());
         }
 
+        System.out.println(customerId);
+
+
     }
 
     @And("validates them from data set")
     public void validatesThemFromDataSet() {
+
+
 
     }
 

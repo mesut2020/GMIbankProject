@@ -3,6 +3,7 @@ package gmibank.com.stepDefinitions;
 import com.github.javafaker.Faker;
 import gmibank.com.pages.US_004_Page;
 import gmibank.com.pages.US_017_Page;
+import gmibank.com.utilities.ConfigurationReader;
 import gmibank.com.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
@@ -73,8 +74,15 @@ public class US_017_StepDefinitions {
     @And("user finds customer {string} and activates user")
     public void userFindsCustomerAndActivatesUser(String customer) {
 
-        if (us_017_page.activatedUser(customer).getText().equals("Deactivated")) {
-            us_017_page.activatedUser(customer).click();
+        if (us_017_page.activatedUser(ConfigurationReader.getProperty(customer)).getText().equals("Deactivated")) {
+            us_017_page.activatedUser(ConfigurationReader.getProperty(customer)).click();
         }
+    }
+
+    public void createAccount(String description){
+
+
+
+
     }
 }
