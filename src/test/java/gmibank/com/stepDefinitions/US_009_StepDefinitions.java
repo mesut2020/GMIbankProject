@@ -4,11 +4,14 @@ import gmibank.com.pages.GmiSignInPage;
 import gmibank.com.pages.US_009_Page;
 import gmibank.com.utilities.ConfigurationReader;
 import gmibank.com.utilities.Driver;
+import gmibank.com.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 public class US_009_StepDefinitions {
 
@@ -66,5 +69,24 @@ public class US_009_StepDefinitions {
         }
 
 
+    @And("user fills required areas")
+    public void userFillsRequiredAreas() {
+
+        String chord = Keys.chord("Ahmet",Keys.TAB,Keys.TAB,Keys.TAB,"254-254-8526",Keys.TAB,
+                "10003",Keys.TAB,Keys.TAB,"New York");
+        us_009_page.middleInitial.sendKeys(chord);
+        us_009_page.countryDropdown.sendKeys("USA");
+        us_009_page.stateBox.sendKeys("NY");
+        action.click(us_009_page.account1(ConfigurationReader.getProperty("description_account1"))).
+                keyDown(Keys.COMMAND).click(us_009_page.account1(ConfigurationReader.getProperty("description_account2"))).perform();
+        action.keyUp(Keys.COMMAND).perform();
+        us_009_page.saveButton.click();
+        ReusableMethods.waitFor(5);
+
+
+
+
+
+    }
 }
 
