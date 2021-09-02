@@ -45,10 +45,10 @@ public class US_016_Page {
     private WebElement transferMoney;
 
     @FindBy(xpath = "//select[@name='fromAccountId']")
-    private WebElement fromAccount;
+    public WebElement fromAccount;
 
     @FindBy(xpath = "//select[@name='toAccountId']")
-    private WebElement toAccount;
+    public WebElement toAccount;
 
     @FindBy(xpath = "//input[@name='balance']")
     private WebElement balance;
