@@ -72,6 +72,18 @@ public class US_014_Page {
                 String chord = Keys.chord(ConfigurationReader.getProperty("employee_username"), Keys.TAB,
                         ConfigurationReader.getProperty("employee_password"),Keys.TAB,Keys.TAB,Keys.TAB,Keys.ENTER);
                 usernameTextBox.sendKeys(chord);
+                break;
+            case "admin":
+                String chord1 = Keys.chord(ConfigurationReader.getProperty("admin_username"), Keys.TAB,
+                        ConfigurationReader.getProperty("admin_password"),Keys.TAB,Keys.TAB,Keys.TAB,Keys.ENTER);
+                usernameTextBox.sendKeys(chord1);
+                break;
+
+            case "demo":
+                String chord2 = Keys.chord(ConfigurationReader.getProperty("Usernamee"), Keys.TAB,
+                        ConfigurationReader.getProperty("Password"),Keys.TAB,Keys.TAB,Keys.TAB,Keys.ENTER);
+                usernameTextBox.sendKeys(chord2);
+                break;
         }
 
 

@@ -14,3 +14,12 @@ Feature:  Existing customer's data should be able to be listed by an employee
       | SSN  |
       | SSN1 |
       | SSN2 |
+
+
+
+  Scenario:User in employee role identifies created bank accounts to customer
+    And I click on My Operations button located on the top navigation bar
+    Then I hover over to Manage Customers
+    And I click on Create a new Customer button
+    And I type given "SSN" into SSN box and click Search button
+    And user fills required areas

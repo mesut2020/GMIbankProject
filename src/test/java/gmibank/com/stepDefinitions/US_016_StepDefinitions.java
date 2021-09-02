@@ -34,14 +34,17 @@ us_016_page.clickToWebElement("myAccounts");
         us_016_page.clickToWebElement("transferMoney");
     }
 
+    demo demo = new demo();
     @And("Select first account as From dropdown")
     public void selectFirstAccountAsFromDropdown() {
-       us_016_page.selectFromAccount("selectFromAccount","6687");
+       // us_016_page.selectFromAccount("selectFromAccount","6677");
+       demo.selectFromAccount(us_016_page.fromAccount, 1);
     }
 
     @And("Select first account as To dropdown")
     public void selectFirstAccountAsToDropdown() {
-        us_016_page.selectToAccount("selectToAccount","6688");
+        demo.selectFromAccount(us_016_page.toAccount, 1);
+        //us_016_page.selectToAccount("selectToAccount","6688");
     }
 
     @And("Click on the Balance and type {string} Euro {string} Cent")

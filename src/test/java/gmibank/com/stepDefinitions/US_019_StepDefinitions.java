@@ -1,5 +1,6 @@
 package gmibank.com.stepDefinitions;
 import gmibank.com.pages.GmiSignInPage;
+import gmibank.com.pages.US_010_US_013_Page;
 import gmibank.com.pages.US_019_Page;
 import gmibank.com.utilities.ConfigurationReader;
 import gmibank.com.utilities.Driver;
@@ -148,34 +149,6 @@ public class US_019_StepDefinitions {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Given("admin select an account as CHECKING and verify")
     public void admin_select_an_account_as_CHECKING_and_verify() {
         ReusableMethods.waitFor(2);
@@ -289,8 +262,10 @@ public class US_019_StepDefinitions {
 
     }
 
-    @And("admin signOut")
+    @And("user signOut")
     public void adminSignOut() {
+        US_010_US_013_Page page = new US_010_US_013_Page();
+        page.newpage();
     }
 
 

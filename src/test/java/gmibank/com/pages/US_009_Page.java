@@ -1,6 +1,7 @@
 package gmibank.com.pages;
 
 import gmibank.com.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -93,5 +94,10 @@ public class US_009_Page {
 
     @FindBy (xpath = "//form[@class='av-invalid']")
     public WebElement form2;
+
+    public WebElement account1(String account){
+
+        return Driver.getDriver().findElement(By.xpath("//option[text()='" + account + "']"));
+    }
 
     }
