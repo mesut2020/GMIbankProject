@@ -12,6 +12,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.codehaus.jackson.map.DeserializationConfig;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 
 import java.io.*;
@@ -27,6 +28,7 @@ public class US_020_StepDefinitions {
     Properties properties;
     Response response;
     String token;
+    List<Object> customerId;
 
     @Given("user creates token via api endpoint {string}")
     public void userCreatesTokenViaApiEndpoint(String uri) throws IOException {
@@ -39,20 +41,19 @@ public class US_020_StepDefinitions {
         response = given().contentType("application/json").when().body(postBody).post(uri);
         JsonPath js = response.jsonPath();
         token = js.get("id_token");
-        /*fileInputStream = new FileInputStream("configuration.properties");
+        System.out.println(token);
+        fileInputStream = new FileInputStream("configuration.properties");
         properties = new Properties();
         properties.load(fileInputStream);
         properties.setProperty("token",token);
         fileOutputStream = new FileOutputStream("configuration.properties");
-        properties.store(fileOutputStream,null);*/
+        properties.store(fileOutputStream,null);
 
     }
 
 
     @Given("user gets all customers data usign api endpoint {string}")
     public void user_gets_all_customers_data_usign_api_endpoint(String endPoint) throws IOException {
-
-        String token = ConfigurationReader.getProperty("token");
 
         response = given().accept(ContentType.JSON).auth().oauth2(token).
                 when().get(endPoint);
@@ -78,10 +79,10 @@ public class US_020_StepDefinitions {
         objectMapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
         Customer [] customers = objectMapper.readValue(response.asString(),Customer[].class);
 
-        List<Object> customerId = new ArrayList<>();
+        customerId = new ArrayList<>();
 
         for (int i = 0; i < customers.length; i++) {
-            customerId.add(customers[i].getId());
+            customerId.add(customers[i].getSsn());
         }
 
         System.out.println(customerId);
@@ -92,8 +93,29 @@ public class US_020_StepDefinitions {
     @And("validates them from data set")
     public void validatesThemFromDataSet() {
 
+        List<Object> expectedSsn = new ArrayList<>();
+        expectedSsn.add("111-54-5450");
+        expectedSsn.add("111-54-5458");
+        Assert.assertTrue(customerId.containsAll(expectedSsn));
+        System.out.println("Test Success");
 
 
     }
 
+    @And("validates them them {int} by {int}")
+    public void validatesThemThemBy(int arg0, int arg1) {
+
+        response = given().accept(ContentType.JSON).auth().oauth2(token).
+                when().get("https://gmibank-qa-environment.com/api/tp-customers?size=3000");
+
+        JsonPath jsonPath = response.jsonPath();
+        List<Object> actualSsn = jsonPath.getList("ssn");
+
+        response.then().assertThat().statusCode(200).contentType(ContentType.JSON).
+                body("ssn", Matchers.hasItem("111-54-5450"),
+                "email",Matchers.hasItem("team54c@team.com"));
+
+        Assert.assertTrue(actualSsn.contains("111-54-5450"));
+
+    }
 }
