@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import static gmibank.com.jsonModels.States_JsonBody.createState1;
 import java.io.IOException;
 import java.util.List;
@@ -22,64 +23,33 @@ public class US_022_StepDefinitions {
     @Given("user gets all states data using api endpoint {string}")
     public void userGetsAllStatesDataUsingApiEndpoint(String URI) {
 
-        responsePostBody=given().headers("Authorization","Bearer " +
-                                ConfigurationReader.getProperty("token"),
-                        "Content-Type",ContentType.JSON,
-                        "Accept",ContentType.JSON).
+        // CREATING STATE WITH POST REQUEST
+        responsePostBody = given().headers("Authorization","Bearer "+ConfigurationReader.getProperty("token"),
+                    "Content-Type",ContentType.JSON,"Accept",ContentType.JSON).
+                when().body(createState1).post(URI).then().contentType(ContentType.JSON).extract().response();
 
-                when().body(createState1).post(URI).
-                then().contentType(ContentType.JSON).extract().response();
-
-
+        // READING DATA WITH GET REQUEST
         response= given().accept(ContentType.JSON).auth().oauth2(ConfigurationReader.getProperty("token")).
-                get(URI).then().extract().response();
-       // response.prettyPrint();
+                get(URI);
 
-
+        response.prettyPrint();
     }
 
     @And("validates the state from data set")
     public void validatesTheStateFromDataSet() throws IOException {
 
-        JsonPath jsonPath = response.jsonPath();
+            JsonPath jsonPath = response.jsonPath();
+            List<Object> stateList = jsonPath.getList("name");
 
-
-        List<Object> stateList = jsonPath.getList("name");
         System.out.println(stateList);
-        if(stateList.contains(ConfigurationReader.getProperty("verifyState"))){
-            System.out.println("State Data Created");
+
+        if (stateList.contains(ConfigurationReader.getProperty("verifyState"))){
+            System.out.println("Passed!");
+            Assert.assertTrue(true);
         }else{
-            System.out.println("Not On Record");
+            System.out.println("Not on record!");
+            Assert.assertTrue(false);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        for (int state = 1; state<=actualStates.size(); state++ ){
-//            if (actualStates.contains(ConfigurationReader.getProperty("verifyState"))){
-//                System.out.println("State Validation Passed" + state);
-//            }else{
-//
-//                responsePostBody =given().headers("Authorization","Bearer " +
-//                                        ConfigurationReader.getProperty("token"),
-//                                "Content-Type",ContentType.JSON,
-//                                "Accept",ContentType.JSON).
-//
-//                        when().body(createState1).post("https://gmibank-qa-environment.com/api/tp-states").
-//                        then().contentType(ContentType.JSON).extract().response();
-//            }
-//       System.out.println(responsePostBody.asString());
-
 
     }
 }
