@@ -4,4 +4,4 @@
 /*.log
 runners
 /*.xml
-/DataBaseStepDefinitions.java
+/.DataBaseStepDefinitions.java
