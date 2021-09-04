@@ -4,4 +4,4 @@
 /*.log
 runners
 /*.xml
-src/test/java/DataBaseStepDefinitions.java
+ui_features/DataBaseTesting.feature
