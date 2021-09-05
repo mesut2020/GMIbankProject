@@ -114,6 +114,7 @@ public class US_006_StepDefinitions {
         us_006_page.emailBoxUserInfo.sendKeys(ConfigurationReader.getProperty("user_email"));
         us_006_page.saveButtonUserInfo.click();
 
+
     }
 
 }
