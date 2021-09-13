@@ -5,7 +5,6 @@ Feature: System should allow any user to register with valid credentials validat
     And Ders User navigates to registration page
 
   @us001_tc01
-  @smokeTest
   Scenario: US_01_TC_01 System should allow any user to register with valid credentials
   validating the success message
 

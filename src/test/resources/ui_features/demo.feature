@@ -6,7 +6,7 @@ Feature: DEMO MEETING
   # Employee rolundeki kullanici musterimize olusturulmus banka hesaplarini musterimize tanimliyor.
   # Musterimiz para transferi icin artik hazir. Müşteri Giriş yapabiliyor.
   # Musteri hesaplar arasi para transferini gerceklestiriyor.
-
+  @demo
   Scenario: TEAM54
     * user on the home page "gmibank_url"
     * user navigates to registration page
