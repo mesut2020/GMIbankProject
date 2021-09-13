@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/ui_features",
         glue = "gmibank/com/stepDefinitions",
 
-        tags = "@dene1",
+        tags = "@smokeTest",
 
 
 
