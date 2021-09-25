@@ -12,7 +12,7 @@ public class DatabaseUtility {
     private static ResultSet resultSet;
 
 
-    public static void createConnection() {
+    public static Connection createConnection() {
         String url = "jdbc:postgresql://157.230.48.97:5432/gmibank_db";
         String user = "techprodb_user";
         String password = "Techpro_@126";
@@ -22,15 +22,29 @@ public class DatabaseUtility {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return connection;
     }
-    public static void createConnection(String url, String user, String password) {
+
+    public static Connection createConnection(String url, String user, String password) {
         try {
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return connection;
     }
+
+    public static Statement getStatement() {
+        try {
+            statement = connection.createStatement();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return statement;
+    }
+
     public static void closeConnection() {
         try {
             if (resultSet != null) {
@@ -115,11 +129,29 @@ public class DatabaseUtility {
     public static List<Object> getColumnData(String query, String column) {
         executeQuery(query);
         List<Object> rowList = new ArrayList<>();
-        ResultSetMetaData rsmd;
         try {
-            rsmd = resultSet.getMetaData();
             while (resultSet.next()) {
                 rowList.add(resultSet.getObject(column));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return rowList;
+    }
+
+    /**
+     *
+     * @param query
+     * @param columnNum
+     * @return list of values of a single column from the result set
+     */
+    public static List<Object> getColumnData(String query, int columnNum) {
+        executeQuery(query);
+        List<Object> rowList = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                rowList.add(resultSet.getObject(columnNum));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -177,16 +209,12 @@ public class DatabaseUtility {
     private static void executeQuery(String query) {
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
             resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
     }
     public static int getRowCount() throws Exception {
         resultSet.last();
