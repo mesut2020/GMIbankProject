@@ -8,18 +8,16 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import gmibank.com.utilities.Driver;
 
-    public class Hooks {
+public class Hooks {
+
     @Before
-    public void setup(){
-
+    public void setup(Scenario scenario){
+        System.out.println(scenario.getName());
     }
-    /*@After
-    public void tearDown(Scenario scenario){
-        final byte[] screenshot=((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-        if (scenario.isFailed()) {
-            scenario.attach(screenshot, "image/png","screenshots");
-        }
-        Driver.closeDriver();
-    }*/
 
+    @After
+    public void tearDown(Scenario scenario) {
+        System.out.println(scenario.getName() + " : " +scenario.getStatus());
+        Driver.closeDriver();
+    }
 }

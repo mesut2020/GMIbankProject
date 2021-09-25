@@ -7,12 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty",
-                "html:target/html-reports/cucumber.html",
-                "json:target/json-reports/cucumber.json",
-                "junit:target/xml-report/cucumber.xml",
-                "rerun:target/FailedReRun.txt"
-        },
+        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "summary"},
         features = "src/test/resources/ui_features",
         glue = "gmibank/com/stepDefinitions",
 
@@ -23,5 +18,5 @@ import org.junit.runner.RunWith;
         monochrome = false, // outputların daha okunabilir olması ıcın
         publish = false  // it is to get online report
 )
-public class TestRunner {
+public class TestRunnerExtentReport {
 }
