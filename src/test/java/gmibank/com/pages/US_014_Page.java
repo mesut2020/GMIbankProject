@@ -2,6 +2,7 @@ package gmibank.com.pages;
 
 import gmibank.com.utilities.ConfigurationReader;
 import gmibank.com.utilities.Driver;
+import gmibank.com.utilities.ReusableMethods;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -80,7 +81,7 @@ public class US_014_Page {
                 break;
 
             case "demo":
-                String chord2 = Keys.chord(ConfigurationReader.getProperty("Usernamee"), Keys.TAB,
+                String chord2 = Keys.chord(ReusableMethods.fakeUserName, Keys.TAB,
                         ConfigurationReader.getProperty("Password"),Keys.TAB,Keys.TAB,Keys.TAB,Keys.ENTER);
                 usernameTextBox.sendKeys(chord2);
                 break;

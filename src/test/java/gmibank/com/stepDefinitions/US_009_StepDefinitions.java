@@ -39,7 +39,7 @@ public class US_009_StepDefinitions {
 
         @And("I type given {string} into SSN box and click Search button")
          public void iTypeGivenIntoSSNBoxAndClickSearchButton(String SSN) throws InterruptedException {
-        us_009_page.searchSSN.sendKeys(ConfigurationReader.getProperty(SSN));
+        us_009_page.searchSSN.sendKeys(ReusableMethods.randomSSN);
         us_009_page.searchButton.click();
             Driver.waitForPageToLoad(2000);
             Thread.sleep(4000);
@@ -77,9 +77,9 @@ public class US_009_StepDefinitions {
         us_009_page.middleInitial.sendKeys(chord);
         us_009_page.countryDropdown.sendKeys("USA");
         us_009_page.stateBox.sendKeys("NY");
-        action.click(us_009_page.account1(ConfigurationReader.getProperty("description_account1"))).
-                keyDown(Keys.COMMAND).click(us_009_page.account1(ConfigurationReader.getProperty("description_account2"))).perform();
-        action.keyUp(Keys.COMMAND).perform();
+        action.click(us_009_page.account1(ReusableMethods.randomAccount_1)).
+                keyDown(Keys.CONTROL).click(us_009_page.account1(ReusableMethods.randomAccount_2)).perform();
+        action.keyUp(Keys.CONTROL).perform();
         us_009_page.saveButton.click();
         ReusableMethods.waitFor(5);
 

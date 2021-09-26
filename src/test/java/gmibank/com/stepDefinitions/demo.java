@@ -18,11 +18,11 @@ public class demo {
 
     }
 
-    @And("employee creates {int} brand new accounts")
-    public void employeeCreatesBrandNewAccounts(int arg0) {
-        createAccount(ConfigurationReader.getProperty("description_account1"));
+    @And("employee creates 2 brand new accounts")
+    public void employeeCreatesBrandNewAccounts() {
+        createAccount(ReusableMethods.getRandomAccount1());
         ReusableMethods.waitFor(4);
-        createAccount(ConfigurationReader.getProperty("description_account2"));
+        createAccount(ReusableMethods.getRandomAccount2());
 
     }
     @Given("a little wait")

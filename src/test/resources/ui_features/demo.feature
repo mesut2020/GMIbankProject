@@ -1,11 +1,12 @@
 Feature: DEMO MEETING
 
-  # Musteri kayit icin bir basvuru yapiyor.
-  # Admin rolundeki kullanici basvuru yapan musteriyi onayliyor
-  # Employee rolundeki kullanici musterimize 2 tane banka hesabi aciyor
-  # Employee rolundeki kullanici musterimize olusturulmus banka hesaplarini musterimize tanimliyor.
-  # Musterimiz para transferi icin artik hazir. Müşteri Giriş yapabiliyor.
-  # Musteri hesaplar arasi para transferini gerceklestiriyor.
+  # The customer registers on the site.
+  # Admin should accept the customer registration.
+  # Employee creates at least two Account for customer.
+  # Employee adds these accounts to customer.
+  # Customer logins to system.
+  # Customer makes money Transfer between accounts.
+
   @demo
   Scenario: TEAM54
     * user on the home page "gmibank_url"

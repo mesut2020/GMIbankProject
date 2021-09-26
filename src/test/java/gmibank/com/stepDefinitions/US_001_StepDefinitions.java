@@ -13,6 +13,8 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
+import java.util.Random;
+
 public class US_001_StepDefinitions {
     GmiSignInPage homePage = new GmiSignInPage();
     US_001_Page registrationPage = new US_001_Page();
@@ -32,33 +34,34 @@ public class US_001_StepDefinitions {
 
     @Then("user provides a valid {string}")
     public void dersUserProvidesAValidSSN(String ssn) {
-        registrationPage.ssnTextBox.sendKeys(ConfigurationReader.getProperty(ssn));
+        registrationPage.ssnTextBox.sendKeys(ReusableMethods.getRandomSSN());
+        //registrationPage.ssnTextBox.sendKeys(ConfigurationReader.getProperty(ssn));
     }
 
     @Then("user provides a valid Firstname")
     public void dersUserProvidesAValidFirstname() {
-        registrationPage.firstNameTextBox.sendKeys("Yakup");
+        registrationPage.firstNameTextBox.sendKeys(ReusableMethods.getFakeFirstName());
     }
 
 
     @Then("user provides a valid Lastname")
     public void dersUserProvidesAValidLastname() {
-        registrationPage.lastNameTextBox.sendKeys("Ak");
+        registrationPage.lastNameTextBox.sendKeys(ReusableMethods.getFakeLastName());
     }
 
     @Then("user provides a valid Address")
     public void dersUserProvidesAValidAddress() {
-        registrationPage.addressTextBox.sendKeys("Salladim str. 55");
+        registrationPage.addressTextBox.sendKeys(new Faker().address().cityName());
     }
 
     @Then("user provides a valid Mobile Phone Number")
     public void dersUserProvidesAValidMobilePhoneNumber() {
-        registrationPage.mobilePhoneNumberTextBox.sendKeys("254-254-7326");
+        registrationPage.mobilePhoneNumberTextBox.sendKeys(ReusableMethods.getNewRequestNumber("254-254-7326"));
     }
 
     @Then("user provides a valid Username {string}")
     public void dersUserProvidesAValidUsername(String username) {
-        registrationPage.usernameTextBox.sendKeys(ConfigurationReader.getProperty(username));
+        registrationPage.usernameTextBox.sendKeys(ReusableMethods.getFakeUserName());
     }
 
     @Then("user provides a valid Email")

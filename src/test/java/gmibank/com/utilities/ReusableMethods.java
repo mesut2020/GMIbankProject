@@ -1,5 +1,6 @@
 package gmibank.com.utilities;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -10,10 +11,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 
 public class ReusableMethods {
+
+    public static String fakeUserName;
+    public static String fakeFirstName;
+    public static String fakeLastName;
+    public static String randomSSN;
+    public static String randomAccount_1;
+    public static String randomAccount_2;
+
     //========Switching Window=====//
     public static void switchToWindow(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
@@ -221,6 +231,24 @@ public class ReusableMethods {
 
     // ===== RONDOM DATA === //
 
+    public static int randomNumberGenerator(int min, int max){
+        return (int)(Math.random()*(max-min)+min);
+    }
+
+    public static String getRandomSSN() {
+        randomSSN = "";
+        for (int i = 0; i < 9; i++) {
+            if(i==3 || i==5) randomSSN += "-";
+            randomSSN += randomNumberGenerator(1,10);
+        }
+        return randomSSN;
+    }
+
+    /**
+     * method adds three different chars to first part of email.
+     * @param email is current email
+     * @return a new email that is changed only first part
+     */
     public static String getNewEmail(String email) {
         String data = "abcdefghijklmnoprstuvyzxw0123456789";
         int indexOfEt = email.indexOf("@");
@@ -236,6 +264,11 @@ public class ReusableMethods {
         return email;
     }
 
+    /**
+     * Method changes the last three digitis of current phone number
+     * @param mobileNumber is current mobeile phone number
+     * @return new mobile number
+     */
     public static String getNewRequestNumber(String mobileNumber) {
         String data = "0123456789";
         String numberFirstPart = mobileNumber.substring(0,mobileNumber.length()-3);
@@ -250,12 +283,39 @@ public class ReusableMethods {
 
     }
 
-    public static String randomMethod(int a, int ilkAscii, int sonAscii){
+    public static String randomMethod(int a, int firstAscii, int lastAscii){
         String myData ="";
         for (int i=0;i<a;i++) {
-            char ascii = (char) ThreadLocalRandom.current().nextInt(ilkAscii, sonAscii );
+            char ascii = (char) ThreadLocalRandom.current().nextInt(firstAscii, lastAscii );
             myData =myData + ascii;
         }
         return myData;
     }
+
+    public static String getFakeUserName(){
+        fakeUserName = new Faker().name().username();
+        return fakeUserName;
+    }
+
+    public static String getFakeFirstName(){
+        fakeFirstName = new Faker().name().firstName();
+        return fakeFirstName;
+    }
+
+    public static String getFakeLastName(){
+        fakeLastName = new Faker().name().lastName();
+        return fakeLastName;
+    }
+
+    public static String getRandomAccount1(){
+        randomAccount_1 = new Faker().currency().name();
+        return randomAccount_1;
+    }
+
+    public static String getRandomAccount2(){
+        randomAccount_2 = new Faker().currency().name();
+        return randomAccount_2;
+    }
+
+
 }

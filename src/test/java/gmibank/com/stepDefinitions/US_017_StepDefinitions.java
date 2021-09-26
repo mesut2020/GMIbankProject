@@ -5,6 +5,7 @@ import gmibank.com.pages.US_004_Page;
 import gmibank.com.pages.US_017_Page;
 import gmibank.com.utilities.ConfigurationReader;
 import gmibank.com.utilities.Driver;
+import gmibank.com.utilities.ReusableMethods;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
@@ -74,9 +75,12 @@ public class US_017_StepDefinitions {
     @And("user finds customer {string} and activates user")
     public void userFindsCustomerAndActivatesUser(String customer) {
 
-        if (us_017_page.activatedUser(ConfigurationReader.getProperty(customer)).getText().equals("Deactivated")) {
-            us_017_page.activatedUser(ConfigurationReader.getProperty(customer)).click();
+        if (us_017_page.activatedUser(ReusableMethods.fakeUserName).getText().equals("Deactivated")) {
+            us_017_page.activatedUser(ReusableMethods.fakeUserName).click();
         }
+//        if (us_017_page.activatedUser(ConfigurationReader.getProperty(customer)).getText().equals("Deactivated")) {
+//            us_017_page.activatedUser(ConfigurationReader.getProperty(customer)).click();
+//        }
     }
 
     public void createAccount(String description){
