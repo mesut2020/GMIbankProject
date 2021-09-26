@@ -37,7 +37,7 @@ public class DatabaseUtility {
 
     public static Statement getStatement() {
         try {
-            statement = connection.createStatement();
+            statement = createConnection().createStatement();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

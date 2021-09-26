@@ -5,28 +5,22 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class US_029_StepDefinitions {
 
-    private ResultSet users;
-    Connection connection;
-    Statement statement;
-    ResultSet resultSet;
+    private Connection connection;
+    private Statement statement;
+    private ResultSet resultSet;
 
-    List<List<Object>> listOfUsers;
-    List<Object> listOfFirstName;
-    List<List<Object>> listOfCountries;
-    List<Object> listOfCountryNames;
-    List<List<Object>> listOfStates;
-    List<Object> listOfStateNames;
+    private List<Object> listOfFirstName;
+    private List<Object> listOfCountryNames;
+    private List<Object> listOfStateNames;
 
     @Given("user connects to GMIBank database by using {string}, {string} and {string}")
     public void userConnectsToGMIBankDatabaseByUsingAnd(String url, String username, String password) {
@@ -43,7 +37,7 @@ public class US_029_StepDefinitions {
             System.out.print(resultSet.getMetaData().getColumnLabel(i) + "    ");
         }
         System.out.println();
-        listOfUsers = DatabaseUtility.getQueryResultList("SELECT * FROM public.jhi_user");
+        List<List<Object>> listOfUsers = DatabaseUtility.getQueryResultList("SELECT * FROM public.jhi_user");
         System.out.println(listOfUsers.get(0));
 //        for (List<Object> listOfUser : listOfUsers) {
 //            System.out.println(listOfUser);
@@ -60,7 +54,7 @@ public class US_029_StepDefinitions {
 
     @Given("user should be reads all countries data from database")
     public void userShouldBeReadsAllCountriesDataFromDatabase() {
-        listOfCountries = DatabaseUtility.getQueryResultList("SELECT * FROM public.tp_country ORDER BY name DESC");
+        List<List<Object>> listOfCountries = DatabaseUtility.getQueryResultList("SELECT * FROM public.tp_country ORDER BY name DESC");
         listOfCountryNames = DatabaseUtility.getColumnData("SELECT * FROM public.tp_country","name");
         System.out.println(listOfCountryNames);
 //        for (List<Object> listOfCountry : listOfCountries) {
@@ -75,7 +69,7 @@ public class US_029_StepDefinitions {
 
     @Given("user should be reads all states data of related to USA from database")
     public void userShouldBeReadsAllStatesDataOfRelatedToUSAFromDatabase() {
-        listOfStates = DatabaseUtility.getQueryResultList("SELECT * FROM public.tp_state");
+        List<List<Object>> listOfStates = DatabaseUtility.getQueryResultList("SELECT * FROM public.tp_state");
         listOfStateNames = DatabaseUtility.getColumnData("SELECT * FROM public.tp_state", 2);
         System.out.println(listOfStateNames);
     }
@@ -89,6 +83,5 @@ public class US_029_StepDefinitions {
     public void userShouldBeExitGMIBankDatabase() {
         DatabaseUtility.closeConnection();
     }
-
 
 }
