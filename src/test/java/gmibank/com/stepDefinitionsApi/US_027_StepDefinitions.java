@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
+import org.junit.Assert;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import static io.restassured.RestAssured.given;
 public class US_027_StepDefinitions {
 
     Response response;
+    int randomStateId;
 
     @When("user deletes a state by using api end point {string}")
     public void userDeletesAStateByUsingApiEndPoint(String url) {
@@ -23,7 +25,7 @@ public class US_027_StepDefinitions {
 
         List<Integer> statesIdList = response.jsonPath().getList("id");
 
-        int randomStateId = statesIdList.get((int)(Math.random()* statesIdList.size()));
+        randomStateId = statesIdList.get((int)(Math.random()* statesIdList.size()));
 
         given().contentType(ContentType.JSON)
                 .auth().oauth2(ConfigurationReader.getProperty("token"))
@@ -39,5 +41,10 @@ public class US_027_StepDefinitions {
 
     @Then("validates if the state has been deleted")
     public void validatesIfTheStateHasBeenDeleted() {
+        response = given().contentType(ContentType.JSON)
+                .auth().oauth2(ConfigurationReader.getProperty("token"))
+                .when().get("https://www.gmibank.com/api/tp-states/"+randomStateId);
+
+        Assert.assertTrue(response.jsonPath().getString("detail").equals("404 NOT_FOUND"));
     }
 }
