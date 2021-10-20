@@ -102,8 +102,8 @@ public class US_020_StepDefinitions {
 
     }
 
-    @And("validates them them {int} by {int}")
-    public void validatesThemThemBy(int arg0, int arg1) {
+    @And("validates them them 1 by 1")
+    public void validatesThemThemBy() {
 
         response = given().accept(ContentType.JSON).auth().oauth2(token).
                 when().get("https://gmibank-qa-environment.com/api/tp-customers?size=3000");

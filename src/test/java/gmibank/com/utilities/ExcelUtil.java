@@ -1,9 +1,14 @@
 package gmibank.com.utilities;
 
+import io.cucumber.java.Scenario;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +20,7 @@ public class ExcelUtil {
     private Workbook workBook;
     private Sheet workSheet;
     private String path;
+
     public ExcelUtil(String path, String sheetName) {//This Constructor is to open and access the excel file
         this.path = path;
         try {
@@ -111,5 +117,104 @@ public class ExcelUtil {
     public void setCellData(String value, String columnName, int row) {
         int column = getColumnsNames().indexOf(columnName);
         setCellData(value, row, column);
+    }
+
+    public static void writeScenarioToExcel(Scenario scenario) {
+        String path = "RunnedScenarios.xlsx";
+        String sheetName = "Results";
+        String time = ReusableMethods.date();
+        String browser = Driver.browsers.get();
+
+        File f = new File(path);
+
+        if (!f.exists()) {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet(sheetName);
+
+            Row row = sheet.createRow(0);
+
+            Cell cell = row.createCell(0);
+            cell.setCellValue("No");
+
+            cell = row.createCell(1);
+            cell.setCellValue("Scenario");
+
+            cell = row.createCell(2);
+            cell.setCellValue("Status of scenario");
+
+            cell = row.createCell(3);
+            cell.setCellValue("Date and Time");
+
+            cell = row.createCell(4);
+            cell.setCellValue("Browser");
+
+
+            row = sheet.createRow(1);
+            cell = row.createCell(0);
+            cell.setCellValue(1);
+
+            cell = row.createCell(1);
+            cell.setCellValue(scenario.getName());
+
+            cell = row.createCell(2);
+            cell.setCellValue(scenario.getStatus().toString());
+
+            cell = row.createCell(3);
+            cell.setCellValue(time);
+
+            cell = row.createCell(4);
+            cell.setCellValue(browser);
+
+
+            FileOutputStream outputStream = null;
+            try {
+                outputStream = new FileOutputStream(path);
+                workbook.write(outputStream); // icine hafizadaki bilgileri yazdik...
+                workbook.close(); // hafizayi bosalttik...
+                outputStream.close(); // yazma islemi kapatildi...
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            Workbook workbook = null;
+            Sheet sheet = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(path);
+                workbook = WorkbookFactory.create(inputStream);
+                sheet = workbook.getSheet(sheetName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            int numberOfRow = sheet.getPhysicalNumberOfRows();
+            Row row = sheet.createRow(numberOfRow);
+
+            Cell cell = row.createCell(0);
+            cell.setCellValue(numberOfRow);
+
+            cell = row.createCell(1);
+            cell.setCellValue(scenario.getName());
+
+            cell = row.createCell(2);
+            cell.setCellValue(scenario.getStatus().toString());
+
+            cell = row.createCell(3);
+            cell.setCellValue(time);
+
+            cell = row.createCell(4);
+            cell.setCellValue(browser);
+
+            FileOutputStream outputStream = null;
+            try {
+                outputStream = new FileOutputStream(path);
+                workbook.write(outputStream); // icine hafizadaki bilgileri yazdik...
+                workbook.close(); // hafizayi bosalttik...
+                outputStream.close(); // yazma islemi kapatildi...
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

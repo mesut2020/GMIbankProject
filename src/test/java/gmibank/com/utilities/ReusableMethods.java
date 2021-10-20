@@ -1,6 +1,9 @@
 package gmibank.com.utilities;
 
 import com.github.javafaker.Faker;
+import io.cucumber.java.Scenario;
+import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -8,12 +11,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ReusableMethods {
 
@@ -24,7 +34,10 @@ public class ReusableMethods {
     public static String randomAccount_1;
     public static String randomAccount_2;
 
-    //========Switching Window=====//
+    /*
+     * switches to new window by the exact title
+     * returns to original window if windows with given title not found
+     */
     public static void switchToWindow(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
@@ -42,8 +55,13 @@ public class ReusableMethods {
         actions.moveToElement(element).perform();
     }
 
-    //==========Return a list of string given a list of Web Element====////
-    public static List<String> getElementsText(List<WebElement> list) {
+    /**
+     * return a list of string from a list of elements ignores any element with no
+     * text
+     *
+     * @param list
+     * @return
+     */    public static List<String> getElementsText(List<WebElement> list) {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
             if (!el.getText().isEmpty()) {
@@ -124,6 +142,47 @@ public class ReusableMethods {
         return element;
     }
 
+    /**
+     * Verifies whether the element matching the provided locator is displayed on page
+     * fails if the element matching the provided locator is not found or not displayed
+     *
+     * @param by
+     */
+    public static void verifyElementDisplayed(By by) {
+        try {
+            assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
+        } catch (NoSuchElementException e) {
+            Assert.fail("Element not found: " + by);
+        }
+    }
+
+    /**
+     * Verifies whether the element matching the provided locator is NOT displayed on page
+     * fails if the element matching the provided locator is not found or not displayed
+     *
+     * @param by
+     */
+    public static void verifyElementNotDisplayed(By by) {
+        try {
+            assertFalse("Element should not be visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Verifies whether the element is displayed on page
+     * fails if the element is not found or not displayed
+     *
+     * @param element
+     */
+    public static void verifyElementDisplayed(WebElement element) {
+        try {
+            assertTrue("Element not visible: " + element, element.isDisplayed());
+        } catch (NoSuchElementException e) {
+            Assert.fail("Element not found: " + element);
+        }
+    }
     //======== Slider Ayarlama =========//
     public static void setSliderBall(WebElement element, int sliderStartPoint, int target) {
         Actions actions = new Actions(Driver.getDriver());
@@ -164,8 +223,11 @@ public class ReusableMethods {
         return hex;
     }
 
-    // ========== STALE ELEMENT EXCEPTION FIX METHOD  ==========//
-
+    /**
+     * Waits for element to be not stale
+     *
+     * @param element
+     */
     public void waitForStaleElement(WebElement element) {
         int y = 0;
         while (y <= 15) {
@@ -315,6 +377,30 @@ public class ReusableMethods {
     public static String getRandomAccount2(){
         randomAccount_2 = new Faker().currency().name();
         return randomAccount_2;
+    }
+
+    public static String date(){
+        Date now = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        return formatter.format(now);
+    }
+
+    /**
+     *
+     * @param scenario
+     */
+    public static void screenShot(Scenario scenario){
+        // Alinan resmin dosya adini duzenliyoruz: SenaryoAditarihsaat
+
+        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+        File ekranDosyasi = ts.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(ekranDosyasi, new File("target/failedScreenShots/" +
+                    date() + "_" + scenario.getName() + "_" + Driver.browsers.get() +  ".png")); // chrome_Create country_20201021_014228.png
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
