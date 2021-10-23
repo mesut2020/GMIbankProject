@@ -3,15 +3,13 @@ package gmibank.com.stepDefinitionsApi;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gmibank.com.pojos.Customer;
-import gmibank.com.utilities.ConfigurationReader;
-import gmibank.com.utilities.WriteToTxt;
+import gmibank.com.utilities.ConfigurationSetter;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.http.Cookies;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.codehaus.jackson.map.DeserializationConfig;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 
@@ -29,6 +27,7 @@ public class US_020_StepDefinitions {
     Response response;
     String token;
     List<Object> customerId;
+    Cookies cookies;
 
     @Given("user creates token via api endpoint {string}")
     public void userCreatesTokenViaApiEndpoint(String uri) throws IOException {
@@ -42,12 +41,15 @@ public class US_020_StepDefinitions {
         JsonPath js = response.jsonPath();
         token = js.get("id_token");
         System.out.println(token);
-        fileInputStream = new FileInputStream("configuration.properties");
-        properties = new Properties();
-        properties.load(fileInputStream);
-        properties.setProperty("token",token);
-        fileOutputStream = new FileOutputStream("configuration.properties");
-        properties.store(fileOutputStream,null);
+
+        ConfigurationSetter.setProperty("configuration.properties","token",token);
+
+//        fileInputStream = new FileInputStream("configuration.properties");
+//        properties = new Properties();
+//        properties.load(fileInputStream);
+//        properties.setProperty("token",token);
+//        fileOutputStream = new FileOutputStream("configuration.properties");
+//        properties.store(fileOutputStream,null);
 
     }
 
@@ -110,6 +112,7 @@ public class US_020_StepDefinitions {
 
         JsonPath jsonPath = response.jsonPath();
         List<Object> actualSsn = jsonPath.getList("ssn");
+        System.out.println(actualSsn);
 
         response.then().assertThat().statusCode(200).contentType(ContentType.JSON).
                 body("ssn", Matchers.hasItem("111-54-5450"),
