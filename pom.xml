@@ -193,7 +193,8 @@
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                     <useFile>false</useFile>
                     <includes>
-                        <include>**/runners/*TestRunner*.java</include>
+<!--                        <include>**/runners/*TestRunner*.java</include>-->
+                        <include>**/TestRunnerExtentReport.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
