@@ -18,10 +18,10 @@ import org.junit.runner.RunWith;
 
         tags = "@demo",
 
-        dryRun = false,
-        stepNotifications = true, // to see report gherkin step level
-        monochrome = false, // outputların daha okunabilir olması ıcın
-        publish = false  // it is to get online report
+        dryRun = false
+        //stepNotifications = true, // to see report gherkin step level
+        //monochrome = false, // outputların daha okunabilir olması ıcın
+        //publish = false  // it is to get online report
 )
 public class TestRunner {
 }

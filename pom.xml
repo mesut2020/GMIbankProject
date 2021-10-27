@@ -172,7 +172,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <skipTests>false</skipTests>
                     <includes>
-                        <include>**/TestRunnerExtentReport.java</include>
+                        <include>**/TestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
